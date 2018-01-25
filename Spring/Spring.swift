@@ -131,6 +131,7 @@ public class Spring : NSObject {
         case Flash = "flash"
         case Wobble = "wobble"
         case Swing = "swing"
+        case FallReverse = "fallReverse"
     }
     
     public enum AnimationCurve: String {
@@ -229,6 +230,10 @@ public class Spring : NSObject {
                 animateFrom = false
                 rotate = 15 * CGFloat(CGFloat.pi/180)
                 y = 600*force
+            case .FallReverse:
+                animateFrom = false
+                rotate = 15 * CGFloat(CGFloat.pi/180)
+                y = -600*force
             case .Shake:
                 let animation = CAKeyframeAnimation()
                 animation.keyPath = "position.x"
@@ -504,7 +509,7 @@ public class Spring : NSObject {
                 completion()
                 self?.resetAll()
                 
-            })
+        })
         
     }
     
@@ -530,3 +535,4 @@ public class Spring : NSObject {
     }
     
 }
+
